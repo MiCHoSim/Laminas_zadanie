@@ -1,0 +1,47 @@
+<h1 class="display-3 text-center">Fotogaléria</h1>
+
+<hr>
+
+<div class="container text-center align-middle ">
+    <form class="d-flex align-items-center" action="images/upload" method="POST" id="<?= $form['form_id'] ?>" enctype="multipart/form-data">
+        <?= $form['csrf'] ?>
+        <?= $form['image'] ?>
+        <?= $form['save-button'] ?>
+    </form>
+</div>
+
+<hr>
+
+<div class="row text-center">
+
+    <?php foreach ($images as $key => $image): ?>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 img-thumbnail p-1">
+
+            <div class="d-flex justify-content-between">
+                <h6 class=""><?= $image ?></h6>
+
+                <a href="images/delete/<?= $image ?>" class="btn btn-sm btn-dark py-0 my-1" title="Delete-<?= $image ?>">
+                    <strong>X</strong>
+                </a>
+            </div>
+
+            <button type="button" class="btn" data-toggle="modal" data-target="#dialog_<?= $key ?>" title="Open-<?= $image ?>">
+                <img class="" src="<?= $imagePath . 'small/' . $image ?>" alt="<?= $image ?>">
+            </button>
+        </div>
+
+        <div class="modal fade" id="dialog_<?= $key ?>" tabindex="-1" role="dialog" aria-labelledby="dialog-label" aria-hidden="true">
+            <div class="modal-dialog modal-big" role="document">
+                <div class="modal-content border-info">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                        <img class="modal-image" src="<?= $imagePath . 'big/' . $image ?>?timestamp= <?= time() ?>" alt="<?= $image ?>" title="<?= $image ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+</div>

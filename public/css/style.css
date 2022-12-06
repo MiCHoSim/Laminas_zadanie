@@ -1,0 +1,21 @@
+:root {
+    --brand-color: #013755;
+}
+
+.navbar {
+    background-color: var(--brand-color);
+}
+
+.btn-primary {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+}
+.modal-big {
+    margin: 10px auto !important;
+    max-height: max-content !important;
+    max-width: max-content !important;
+}
+.modal-image{
+    max-height: 80vh !important;
+    max-width: 95vw !important;
+}
